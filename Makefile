@@ -21,7 +21,7 @@ run-gpu: build
 	docker run --rm -it --network host --gpus all --env PYTHONPATH=/tf/src --mount type=bind,source=${PWD},target=/tf ${REPO}/${NAME}-gpu:${VERSION} && make -s clean
 
 run-cpu: build-cpu
-	docker run --rm -it --network host --env PYTHONPATH=/tf/src --mount type=bind,source=${PWD},target=/home/jovyan/work --workdir=/home/jovyan/work ${REPO}/${NAME}-cpu:${VERSION} jupyter notebook
+	docker run --rm -it --network host --mount type=bind,source=${PWD},target=/home/jovyan/work --workdir=/home/jovyan/work ${REPO}/${NAME}-cpu:${VERSION} jupyter notebook
 
 elastic:
 	docker run --rm -it --mount type=bind,source=${PWD}/data/ES,target=/usr/share/elasticsearch/data \
