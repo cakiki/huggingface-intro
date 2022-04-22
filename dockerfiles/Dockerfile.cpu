@@ -12,3 +12,5 @@ RUN set -x \
 USER $NB_UID
 
 RUN pip install pandas tensorflow huggingface_hub tokenizers sentencepiece transformers datasets[streaming] nltk ipywidgets RISE sentencepiece protobuf streamlit gradio
+
+RUN conda install -c pytorch faiss-cpu
