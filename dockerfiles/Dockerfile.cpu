@@ -1,0 +1,14 @@
+FROM jupyter/base-notebook:latest
+
+USER root
+
+RUN set -x \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends \
+    git git-lfs unrar \    
+  && rm -rf /var/lib/apt/lists/*
+
+
+USER $NB_UID
+
+RUN pip install pandas tensorflow huggingface_hub tokenizers sentencepiece transformers datasets[streaming] nltk ipywidgets RISE sentencepiece protobuf streamlit gradio
