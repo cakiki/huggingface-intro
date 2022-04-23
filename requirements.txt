@@ -1,0 +1,16 @@
+pandas
+tensorflow
+huggingface_hub
+tokenizers
+sentencepiece
+transformers
+datasets[streaming]
+nltk
+ipywidgets
+RISE
+sentencepiece
+protobuf
+streamlit
+gradio
+faiss-cpu
+jupyter
