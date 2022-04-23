@@ -2,15 +2,6 @@ VERSION := 0.0.1
 NAME := huggingface-intro
 REPO := cakiki
 
-srun-cpu: push-cpu
-	srun \
-	--container-name=${NAME} --container-writable --mem=200G -c 90 \
-	--container-image=${REPO}/${NAME}-cpu:${VERSION} \
-	--container-mounts=${PWD}:/home/jovyan/work \
-	--pty \
-	--container-workdir /home/jovyan/work \
-	jupyter notebook --ip 0.0.0.0 --allow-root
-
 build-gpu: clean
 	docker build -f dockerfiles/Dockerfile.tf.gpu -t ${REPO}/${NAME}-gpu:${VERSION} -t ${REPO}/${NAME}-gpu:latest .
 
@@ -36,4 +27,3 @@ push-cpu: build-cpu
 
 push-gpu: build-gpu
 	docker push ${REPO}/${NAME}-gpu:${VERSION} && docker push ${REPO}/${NAME}-gpu:latest
-
