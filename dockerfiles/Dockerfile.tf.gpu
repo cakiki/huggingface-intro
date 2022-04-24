@@ -3,7 +3,7 @@ FROM tensorflow/tensorflow:2.9.0rc0-gpu-jupyter
 RUN set -x \
   && apt-get update \
   && apt-get install -y --no-install-recommends \
-    git git lfs \    
+    git git-lfs \    
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --use-feature=2020-resolver pandas tensorflow huggingface_hub tokenizers sentencepiece transformers datasets[streaming] nltk ipywidgets RISE sentencepiece protobuf streamlit gradio scikit-learn
